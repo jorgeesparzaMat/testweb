@@ -139,6 +139,9 @@ body {
     line-height: 1.2;
     font-family: 'Montserrat', sans-serif;
     text-shadow: 0 2px 4px var(--shadow-dark);
+    opacity: 1;
+    visibility: visible;
+    display: block;
 }
 
 .hero-subtitle {

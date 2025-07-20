@@ -285,29 +285,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Efecto de typing para el título principal (solo en desktop)
     const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle && window.innerWidth > 768) {
-        const text = heroTitle.textContent;
-        heroTitle.textContent = '';
-        heroTitle.style.borderRight = '2px solid #D32F2F';
+    if (heroTitle) {
+        // Asegurar que el título sea visible inmediatamente
+        heroTitle.style.opacity = '1';
+        heroTitle.style.visibility = 'visible';
         
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            } else {
-                heroTitle.style.borderRight = 'none';
-            }
-        };
-        
-        // Iniciar typing después de 1 segundo
-        setTimeout(typeWriter, 1000);
-    } else if (heroTitle && window.innerWidth <= 768) {
-        // En móviles, asegurar que el título sea visible inmediatamente
-        heroTitle.style.whiteSpace = 'normal';
-        heroTitle.style.overflow = 'visible';
-        heroTitle.style.display = 'block';
+        if (window.innerWidth > 768) {
+            // Solo aplicar efecto de typing en desktop después de que la página cargue
+            setTimeout(() => {
+                const text = heroTitle.textContent;
+                heroTitle.textContent = '';
+                heroTitle.style.borderRight = '2px solid #D32F2F';
+                
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    } else {
+                        heroTitle.style.borderRight = 'none';
+                    }
+                };
+                
+                typeWriter();
+            }, 0); // Esperar 500 milisegundos para que la página esté completamente cargada
+        } else {
+            // En móviles, mantener el título visible sin efectos
+            heroTitle.style.whiteSpace = 'normal';
+            heroTitle.style.overflow = 'visible';
+            heroTitle.style.display = 'block';
+        }
     }
 
     // Tooltip para elementos interactivos
@@ -320,15 +328,25 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
         
+        // Asegurar que el hero-title sea visible inmediatamente
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.visibility = 'visible';
+            heroTitle.style.display = 'block';
+        }
+        
         // Mostrar elementos con animación escalonada
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
             const elements = heroContent.querySelectorAll('*');
             elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
+                if (el !== heroTitle) { // Excluir el título para que no se afecte
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
             });
         }
     });
@@ -342,13 +360,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 heroTitle.style.overflow = 'visible';
                 heroTitle.style.display = 'block';
                 heroTitle.style.borderRight = 'none';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.visibility = 'visible';
             }
         }
     });
 
     console.log('🚚 DAS Grúas - Web profesional cargada correctamente');
     console.log('🎨 Paleta de colores aplicada: Rojo #D32F2F, Azul #263238');
-    console.log('📝 Contenido actualizado para empresa nueva comprometida con el servicio');
+    console.log('📝 Contenido actualizado para empresa comprometida con el servicio');
 });
 
 // Función para validar teléfono chileno

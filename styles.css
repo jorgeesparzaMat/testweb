@@ -1,81 +1,109 @@
-/* Estilos generales */
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* Variables de colores - Paleta DAS Grúas */
 :root {
-    --primary-color: #1e3a8a;
-    --secondary-color: #475569;
-    --accent-color: #f59e0b;
-    --success-color: #25d366;
-    --dark-color: #1e293b;
-    --light-color: #f8fafc;
-    --gray-100: #f1f5f9;
-    --gray-200: #e2e8f0;
-    --gray-300: #cbd5e1;
-    --gray-400: #94a3b8;
-    --gray-500: #64748b;
-    --gray-600: #475569;
-    --gray-700: #334155;
-    --gray-800: #1e293b;
-    --gray-900: #0f172a;
+    --primary-red: #D32F2F;
+    --primary-red-hover: #B71C1C;
+    --secondary-blue: #263238;
+    --background-light: #F5F5F5;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --hover-light: #ECEFF1;
+    --white: #FFFFFF;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
     line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background-light);
+    font-weight: 400;
 }
 
-/* Navbar */
+/* Navbar - Fondo azul oscuro con texto blanco */
 .navbar {
-    background: rgba(15, 23, 42, 0.95) !important;
+    background: var(--secondary-blue) !important;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px var(--shadow-medium);
     transition: all 0.3s ease;
+    padding: 1rem 0;
 }
 
 .navbar-brand {
-    font-weight: bold;
-    color: white !important;
+    font-weight: 700;
+    color: var(--white) !important;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .navbar-brand img {
-    max-height: 40px;
+    max-height: 45px;
     width: auto;
     object-fit: contain;
     filter: brightness(1.1);
+    margin-right: 0.5rem;
 }
 
 .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--white) !important;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem;
+    border-radius: 6px;
 }
 
 .navbar-nav .nav-link:hover {
-    color: var(--accent-color) !important;
+    color: var(--primary-red) !important;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -2px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: var(--accent-color);
+    height: 3px;
+    background: var(--primary-red);
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
 
 .navbar-nav .nav-link:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
-/* Hero Section */
+.navbar-toggler {
+    border: none;
+    color: var(--white);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Hero Section - Diseño profesional y sereno */
 .hero-section {
-    background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 50%, var(--primary-color) 100%);
-    padding-top: 80px;
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, #1a252f 50%, var(--secondary-blue) 100%);
+    padding-top: 100px;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .hero-section::before {
@@ -86,9 +114,8 @@ body {
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
-        linear-gradient(45deg, rgba(0,0,0,0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(38, 50, 56, 0.1) 0%, transparent 50%);
     background-size: cover;
 }
 
@@ -101,32 +128,33 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 100px);
 }
 
 .hero-title {
     font-size: 3.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #ffffff 0%, var(--accent-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--white);
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 2px 4px var(--shadow-dark);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--gray-300);
-    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 .hero-image {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 50px var(--shadow-dark);
+    border: 3px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-image img {
@@ -134,58 +162,98 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 17px;
     opacity: 1 !important;
     visibility: visible !important;
 }
 
 .hero-image:hover img {
-    transform: scale(1.05);
-}
-
-.hero-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(245, 158, 11, 0.2), rgba(30, 58, 138, 0.2));
-    z-index: 1;
-    border-radius: 20px;
+    transform: scale(1.02);
 }
 
 .hero-stats {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
 }
 
 .hero-stat {
     text-align: center;
-    color: white;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-color);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-red);
     display: block;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .hero-stat-label {
     font-size: 0.9rem;
-    color: var(--gray-300);
+    color: rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-weight: 500;
+    margin-top: 0.5rem;
 }
 
-/* Carrusel */
+/* Botones principales - Rojo con hover más oscuro */
+.btn {
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--primary-red);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--primary-red-hover);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Carrusel - Diseño profesional */
 .carousel {
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    border: 3px solid var(--gray-200);
+    box-shadow: 0 20px 40px var(--shadow-medium);
+    border: 3px solid var(--hover-light);
+    background: var(--white);
 }
 
 .carousel-item img {
@@ -197,36 +265,42 @@ body {
 }
 
 .carousel-caption {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(245, 158, 11, 0.9));
+    background: linear-gradient(135deg, rgba(38, 50, 56, 0.95), rgba(211, 47, 47, 0.9));
     border-radius: 15px;
     padding: 25px;
     bottom: 30px;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .carousel-caption h5 {
     font-weight: 700;
     margin-bottom: 0.5rem;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .carousel-caption p {
     font-weight: 500;
     opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-/* Cards */
+/* Cards - Fondo blanco con hover suave */
 .card {
     border: none;
     border-radius: 20px;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #ffffff 0%, var(--gray-100) 100%);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: var(--white);
+    box-shadow: 0 10px 30px var(--shadow-light);
     overflow: hidden;
+    border: 1px solid var(--hover-light);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px var(--shadow-medium) !important;
+    border-color: var(--primary-red);
 }
 
 .card-body {
@@ -241,7 +315,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background: var(--primary-red);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -251,10 +325,91 @@ body {
 }
 
 .card .fas, .card .fab {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-red);
+    transition: all 0.3s ease;
+}
+
+.card:hover .fas,
+.card:hover .fab {
+    transform: scale(1.1);
+    color: var(--primary-red-hover);
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Secciones */
+section {
+    padding: 80px 0;
+    background: var(--background-light);
+}
+
+section.bg-light {
+    background: var(--white) !important;
+}
+
+section h2 {
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-red);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+/* Formulario de contacto */
+.form-control {
+    border: 2px solid var(--hover-light);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-control:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.15);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
 }
 
 /* Botón flotante de WhatsApp */
@@ -269,26 +424,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
-    background-color: var(--success-color);
-    color: white;
+    width: 65px;
+    height: 65px;
+    background-color: #25d366;
+    color: var(--white);
     border-radius: 50%;
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
+    border: 3px solid var(--white);
 }
 
 .whatsapp-button:hover {
     background-color: #128c7e;
-    color: white;
+    color: var(--white);
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }
 
 .whatsapp-button i {
-    font-size: 28px;
+    font-size: 30px;
 }
 
 @keyframes pulse {
@@ -303,81 +459,174 @@ body {
     }
 }
 
-/* Secciones */
-section {
-    padding: 80px 0;
-}
-
-section h2 {
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-    font-size: 2.5rem;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--gray-600);
-    font-size: 1.1rem;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Formulario de contacto */
-.form-control {
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
-    padding: 12px 15px;
-    transition: border-color 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-.btn {
-    border-radius: 10px;
-    padding: 12px 25px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    border: none;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
-}
-
-.btn-outline-light {
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.btn-outline-light:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-}
-
-/* Footer */
+/* Footer - Fondo azul oscuro */
 footer {
+    background: var(--secondary-blue) !important;
+    color: var(--white);
+    padding: 3rem 0 2rem;
     margin-top: 0;
+}
+
+footer h5 {
+    color: var(--white);
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+footer a {
+    color: var(--primary-red);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-red-hover);
+}
+
+/* Estilos para estadísticas */
+.stat-item {
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: all 0.3s ease;
+    border: 1px solid var(--hover-light);
+    text-align: center;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    border-color: var(--primary-red);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Sección Nosotros */
+.about-content {
+    padding: 2rem 0;
+}
+
+.about-content .lead {
+    color: var(--text-primary);
+    font-weight: 500;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px var(--shadow-medium);
+    border: 3px solid var(--hover-light);
+}
+
+.about-image img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+}
+
+.about-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Información de contacto */
+.contact-info {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px var(--shadow-light);
+    border: 1px solid var(--hover-light);
+}
+
+.contact-info h5 {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info .d-flex {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-info .d-flex:hover {
+    background: var(--hover-light);
+    transform: translateX(5px);
+}
+
+.contact-info .fas,
+.contact-info .fab {
+    color: var(--primary-red);
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--primary-red);
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animaciones */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos para el navbar en scroll */
+.navbar.scrolled {
+    background-color: var(--secondary-blue) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px var(--shadow-medium);
 }
 
 /* Responsive */
@@ -385,10 +634,14 @@ footer {
     .hero-section {
         text-align: center;
         min-height: 100vh;
+        padding-top: 120px;
     }
     
     .hero-title {
         font-size: 2.5rem;
+        white-space: normal;
+        overflow: visible;
+        display: block;
     }
     
     .hero-subtitle {
@@ -398,10 +651,16 @@ footer {
     .hero-stats {
         justify-content: center;
         gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .hero-stat {
+        flex: 1;
+        min-width: 120px;
     }
     
     .hero-stat-number {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .hero-stat-label {
@@ -418,12 +677,12 @@ footer {
     }
     
     .whatsapp-button {
-        width: 50px;
-        height: 50px;
+        width: 55px;
+        height: 55px;
     }
     
     .whatsapp-button i {
-        font-size: 24px;
+        font-size: 26px;
     }
     
     section {
@@ -437,16 +696,25 @@ footer {
     .stat-item {
         margin-bottom: 1rem;
     }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 576px) {
-    .hero-section .display-4 {
+    .hero-title {
         font-size: 2rem;
+        white-space: normal;
+        overflow: visible;
+        display: block;
+        line-height: 1.1;
     }
     
     .btn-lg {
-        padding: 10px 20px;
-        font-size: 1rem;
+        padding: 12px 20px;
+        font-size: 0.9rem;
     }
     
     .carousel-caption {
@@ -461,104 +729,15 @@ footer {
     .carousel-caption p {
         font-size: 0.9rem;
     }
-}
-
-/* Animaciones */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Scroll suave */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Estilos para enlaces */
-a {
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--primary-color);
-}
-
-/* Estilos para iconos */
-.fas, .fab {
-    transition: transform 0.3s ease;
-}
-
-.card:hover .fas,
-.card:hover .fab {
-    transform: scale(1.1);
-}
-
-/* Estilos para el navbar en scroll */
-.navbar.scrolled {
-    background-color: rgba(33, 37, 41, 0.95) !important;
-    backdrop-filter: blur(10px);
-}
-
-/* Estilos para estadísticas */
-.text-primary {
-    color: var(--primary-color) !important;
-}
-
-.stat-item {
-    padding: 1.5rem;
-    background: linear-gradient(135deg, var(--gray-100), white);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-}
-
-.stat-label {
-    color: var(--gray-600);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-}
-
-.about-content {
-    padding: 2rem 0;
-}
-
-.about-image {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.about-image img {
-    transition: transform 0.5s ease;
-}
-
-.about-image:hover img {
-    transform: scale(1.05);
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-stat {
+        width: 100%;
+    }
 }
 
 /* Estilos para el carrusel en móviles */
@@ -576,5 +755,195 @@ a:hover {
         width: 10px;
         height: 10px;
         border-radius: 50%;
+        background-color: var(--primary-red);
     }
+}
+
+/* Estilos para iconos */
+.fas, .fab {
+    transition: transform 0.3s ease;
+}
+
+/* Estilos para enlaces */
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-red);
+}
+
+/* Clases de utilidad */
+.text-primary {
+    color: var(--primary-red) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-red) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-blue) !important;
+}
+
+.bg-light {
+    background-color: var(--background-light) !important;
+}
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Efectos adicionales para el diseño profesional */
+.loaded {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.scrolling {
+    pointer-events: none;
+}
+
+/* Asegurar visibilidad del hero-title en móviles */
+@media (max-width: 768px) {
+    .hero-title {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        white-space: normal !important;
+        overflow: visible !important;
+    }
+}
+
+/* Efecto de typing para el título */
+.hero-title {
+    overflow: visible;
+    white-space: normal;
+}
+
+/* Mejoras para el formulario */
+.form-control:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.15);
+}
+
+/* Efecto de hover para botones secundarios */
+.btn-outline-secondary {
+    border-color: var(--secondary-blue);
+    color: var(--secondary-blue);
+    background: transparent;
+}
+
+.btn-outline-secondary:hover {
+    background: var(--secondary-blue);
+    color: var(--white);
+    border-color: var(--secondary-blue);
+}
+
+/* Mejoras para las alertas */
+.alert {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+/* Efecto de carga para imágenes */
+img {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Mejoras para el carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    background: rgba(38, 50, 56, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(211, 47, 47, 0.9);
+}
+
+/* Efecto de sombra para elementos importantes */
+.hero-section,
+.carousel,
+.card,
+.about-image {
+    box-shadow: 0 20px 40px var(--shadow-medium);
+}
+
+/* Mejoras para el botón de WhatsApp en móviles */
+@media (max-width: 768px) {
+    .whatsapp-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .whatsapp-button i {
+        font-size: 28px;
+    }
+}
+
+/* Efecto de gradiente para el fondo del hero */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(38, 50, 56, 0.1) 0%, 
+        rgba(211, 47, 47, 0.05) 50%, 
+        rgba(38, 50, 56, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Mejoras para la accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Efecto de brillo para elementos interactivos */
+.btn:hover,
+.card:hover,
+.nav-link:hover {
+    filter: brightness(1.05);
+}
+
+/* Mejoras para el contraste y legibilidad */
+.hero-subtitle,
+.card-text,
+.section-subtitle {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto de profundidad para las estadísticas */
+.hero-stat {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.hero-stat:hover::before {
+    left: 100%;
 } 
